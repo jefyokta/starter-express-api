@@ -10,7 +10,7 @@ app.get('/gemini', (req, res) => {
     const input = req.query.t
     const run = async () => {
         const model = genAi.getGenerativeModel({ model: "gemini-pro" });
-        const prompt = 'what is yuor name?'
+        const prompt = input
         const result = await model.generateContent(prompt);
         const response = await result.response;
         const text = response.text();
@@ -18,6 +18,8 @@ app.get('/gemini', (req, res) => {
         res.json(text)
     }
 })
+
+app.get('/' ,(req,res) => res.json('ok'))
 
 
 app.listen(process.env.PORT || 3000)
