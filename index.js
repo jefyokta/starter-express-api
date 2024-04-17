@@ -15,6 +15,7 @@ app.get('/gemini', (req, res) => {
         const response = await result.response;
         const text = response.text();
         console.log(text);
+        res.json(text)
     }
 })
 
