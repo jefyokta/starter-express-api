@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 
 app.get('/gemini', async (req, res) => {
     const input = req.query.t
-    if (!input) res.status(400)
+    if (!input) res.status(400).json('bad requesst')
     else {
         const response = await run(input)
         res.json({
