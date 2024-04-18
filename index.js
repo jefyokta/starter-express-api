@@ -35,8 +35,8 @@ app.get('/gemini', async (req, res) => {
 
 app.post('/gemini', async (req, res) => {
     const data = req.body
-    console.log(data);
     if (!data) {
+        console.log(data);
         res.status(400)
         
     }
