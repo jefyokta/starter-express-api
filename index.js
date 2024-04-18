@@ -36,18 +36,20 @@ app.get('/gemini', async (req, res) => {
 app.post('/gemini', async (req, res) => {
     const data = req.body
     if (!data) {
-        console.log(data);
-        res.status(400)
-        
+        res.status(400).json('request body nya mana')
+
     }
-    const input = req.body.text
-    const user = req.boy.user
-    const response = await run(input)
-    res.json({
-        response,
-        prompt: input,
-        user
-    })
+    else {
+        console.log(data);
+        const input = req.body.text
+        const user = req.boy.user
+        const response = await run(input)
+        res.json({
+            response,
+            prompt: input,
+            user
+        })
+    }
 
 })
 
