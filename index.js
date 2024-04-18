@@ -33,6 +33,18 @@ app.get('/gemini', async (req, res) => {
 
 })
 
+app.post('/gemini', async (req, res) => {
+    const input = req.body.text
+    const user = req.boy.user
+    const response = await run(input)
+    res.json({
+        response,
+        prompt: input,
+        user
+    })
+
+})
+
 app.get('/', (req, res) => res.json('ok'))
 
 
