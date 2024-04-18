@@ -24,7 +24,8 @@ app.use((req, res, next) => {
 
 
 app.get('/gemini', async (req, res) => {
-    const input = req.query.t
+    const input = req.query.t 
+    if (!input) res.status(400)
     const response = await run(input)
     res.json({
         response,
