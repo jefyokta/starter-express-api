@@ -45,7 +45,7 @@ app.post('/gemini', async (req, res) => {
     else {
         console.log(data);
         const input = req.body.text
-        const user = req.boy.user
+        const user = req.body.user
         const response = await run(input)
         res.json({
             response,
