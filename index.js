@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 
 app.get('/gemini', async (req, res) => {
     const input = req.query.t
-    const username = req.body.user
+    const username = req.body.user? req.body.user : null
     const response = await run(input)
     res.json({
         response,
