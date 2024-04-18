@@ -34,6 +34,12 @@ app.get('/gemini', async (req, res) => {
 })
 
 app.post('/gemini', async (req, res) => {
+    const data = req.body
+    console.log(data);
+    if (!data) {
+        res.status(400)
+        
+    }
     const input = req.body.text
     const user = req.boy.user
     const response = await run(input)
