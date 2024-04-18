@@ -25,10 +25,12 @@ app.use((req, res, next) => {
 
 app.get('/gemini', async (req, res) => {
     const input = req.query.t
+    const username = user.body.user
     const response = await run(input)
     res.json({
         response,
-        prompt: input
+        prompt: input,
+        user: username
     })
 
 })
