@@ -1,5 +1,6 @@
 const { GoogleGenerativeAI } = require('@google/generative-ai')
 const express = require('express')
+const bodyparser = require('body-parser')
 
 const app = express()
 require('dotenv').config()
@@ -14,6 +15,7 @@ const run = async (input) => {
     console.log(text);
     return text
 }
+app.use(bodyparser.json())
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'https://oktaax.wuaze.com');
