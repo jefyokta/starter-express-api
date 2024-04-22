@@ -1,6 +1,9 @@
 const { GoogleGenerativeAI } = require('@google/generative-ai')
 const express = require('express')
 const bodyparser = require('body-parser')
+const { default: axios } = require('axios')
+const fetch = require('node-fetch')
+const fs = require('fs')
 
 const app = express()
 require('dotenv').config()
@@ -27,7 +30,7 @@ app.use((req, res, next) => {
 
 app.get('/gemini', async (req, res) => {
     const input = req.query.t
-    if (!input) res.status(400).json({statusmsg : 'badrequest', msg :' t query params di perlukan untuk request response ai'})
+    if (!input) res.status(400).json({ statusmsg: 'badrequest', msg: ' t query params di perlukan untuk request response ai' })
     else {
         const response = await run(input)
         res.json({
@@ -60,12 +63,22 @@ app.post('/gemini', async (req, res) => {
 
 app.get('/', (req, res) => res.json('ok'))
 
-app.post('/payment',(req,res)=>{
-    const data = req.body
-    const orderid =data.order_id
-    const status = data.status_code
-    res.status(200).json('ok bang midtrans')
-})
+const fetch = require('node-fetch');
+
+app.post('/payment', async (req, res) => {
+    const data = JSON.stringify({
+        orderid: req.body.order_id,
+        status: req.body.status_code
+    });
+
+    try {
+        fs.writeFileSync('data.json', data, 'utf8');
+        res.status(200).json(responseData);
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json('Internal Server Error');
+    }
+});
 
 
 app.listen(process.env.PORT || 3000)
