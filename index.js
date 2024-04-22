@@ -61,7 +61,6 @@ app.post('/gemini', async (req, res) => {
 
 app.get('/', (req, res) => res.json('ok'))
 
-const fetch = require('node-fetch');
 
 app.post('/payment', async (req, res) => {
     const data = JSON.stringify({
