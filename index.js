@@ -60,5 +60,12 @@ app.post('/gemini', async (req, res) => {
 
 app.get('/', (req, res) => res.json('ok'))
 
+app.post('/payment',(req,res)=>{
+    const data = req.body
+    const orderid =data.order_id
+    const status = data.status_code
+    res.status(200).json('ok bang midtrans')
+})
+
 
 app.listen(process.env.PORT || 3000)
