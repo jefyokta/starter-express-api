@@ -2,7 +2,6 @@ const { GoogleGenerativeAI } = require('@google/generative-ai')
 const express = require('express')
 const bodyparser = require('body-parser')
 const { default: axios } = require('axios')
-const fetch = require('node-fetch')
 const fs = require('fs')
 
 const app = express()
@@ -73,7 +72,7 @@ app.post('/payment', async (req, res) => {
 
     try {
         fs.writeFileSync('data.json', data, 'utf8');
-        res.status(200).json(responseData);
+        res.status(200).json('test');
     } catch (error) {
         console.error('Error:', error);
         res.status(500).json('Internal Server Error');
