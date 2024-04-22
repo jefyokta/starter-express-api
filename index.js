@@ -1,7 +1,6 @@
 const { GoogleGenerativeAI } = require('@google/generative-ai')
 const express = require('express')
 const bodyparser = require('body-parser')
-const { default: axios } = require('axios')
 const fs = require('fs')
 
 const app = express()
@@ -68,7 +67,7 @@ app.post('/payment', async (req, res) => {
     const data = JSON.stringify({
         orderid: req.body.order_id,
         status: req.body.status_code
-    });
+    })
 
     try {
         fs.writeFileSync('data.json', data, 'utf8');
